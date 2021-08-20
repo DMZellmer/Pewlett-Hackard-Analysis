@@ -123,3 +123,45 @@ INNER JOIN departments as d
 ON (de.dept_no = d.dept_no);
 	
 --7.3.6 Tailored Lists
+
+--List of Employees in Sales Dept
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	d.dept_name
+INTO sales_info
+FROM current_emp as ce
+INNER JOIN dept_emp as de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments as d
+ON (de.dept_no = d.dept_no)
+WHERE de.dept_no = 'd007'
+
+-- List of employees in Sales and Development Depts
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	d.dept_name
+INTO sales_and_dev_info
+FROM current_emp as ce
+INNER JOIN dept_emp as de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments as d
+ON (de.dept_no = d.dept_no)
+WHERE (de.dept_no = 'd007')
+OR (de.dept_no = 'd005');
+
+--CHALLENGE--
+
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	t.title,
+	t.from_date,
+	t.to_date
+INTO retirement_titles
+FROM employees as e
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+ORDER BY emp_no 
