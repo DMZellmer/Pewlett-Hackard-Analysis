@@ -17,6 +17,8 @@
 # Eligible Mentors
 * The good news for Pewlett_Hackard is that there are 1,550 employees eligible for a new mentorship program to help train and replace the workers lost in the "Silver Tsunami".
 ![image](https://user-images.githubusercontent.com/86337475/130305654-7c9f2624-1611-4c82-ab71-46ad9b3090e7.png)
+![image](https://user-images.githubusercontent.com/86337475/130305974-228a0fbc-825c-4896-a5ae-957068ca6941.png)
+
 
 # Summary
 In summary, there are large numbers of employees nearing retirement, however there exists an ample pool of mentors who are approaching retirement age that would do well to train the next generation of Pewlett-Hackard leaders. 
