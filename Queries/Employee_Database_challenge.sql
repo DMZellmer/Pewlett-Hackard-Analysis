@@ -22,9 +22,9 @@ FROM retirement_titles as rt
 ORDER BY emp_no, to_date DESC;
 
 -- Count of Retiring by Titles (retiring_titles)
-SELECT COUNT(ut.title)
+SELECT COUNT(ut.title), ut.title
 --New Table: retiring_titles
---INTO retiring_titles
+INTO retiring_titles
 FROM unique_titles as ut
 GROUP BY ut.title
-ORDER BY ut.title DESC
+ORDER BY COUNT(ut.title) DESC
