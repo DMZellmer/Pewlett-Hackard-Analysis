@@ -14,7 +14,7 @@ WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 ORDER BY emp_no 
 
 -- Use Dictinct with Orderby to remove duplicate rows
-SELECT DISTINCT ON (rt.emp_no) rt.first_name,
+SELECT DISTINCT ON (rt.emp_no) rt.emp_no, rt.first_name,
 rt.last_name,
 rt.title
 INTO unique_titles
@@ -28,3 +28,28 @@ INTO retiring_titles
 FROM unique_titles as ut
 GROUP BY ut.title
 ORDER BY COUNT(ut.title) DESC
+
+--fix unique-titles to contain emp_no--
+SELECT DISTINCT ON (rt.emp_no) rt.emp_no, rt.first_name,
+rt.last_name,
+rt.title
+INTO unique_titles
+FROM retirement_titles as rt
+ORDER BY emp_no, to_date DESC;
+
+-- Mentorship Eligibility
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
+	e.first_name,
+	e.last_name,
+	e.birth_date,
+	de.from_date,
+	de.to_date,
+	t.title
+INTO Mentorship_Eligibility
+FROM employees as e
+	INNER JOIN dept_emp as de
+		ON (e.emp_no = de.emp_no)
+	INNER JOIN titles as t
+		ON (t.emp_no = e.emp_no)
+WHERE (de.to_date = '9999-01-01' AND birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY emp_no
